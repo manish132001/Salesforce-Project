@@ -1,0 +1,65 @@
+<template>
+<!--Header-->
+<div class="slds-modal__header slds-text-heading_large">Add New Cases</div>
+<div>
+<table>
+<thead>
+    <tr>
+        <td>Subject</td>
+        <td>Status</td>
+        <td>Case Origin</td>
+        <td>Case Reason</td>
+        
+        <td>
+            <lightning-button-icon icon-name="utility:add" onclick={addNewCase}  alternative-text="Add New Case" class="slds-m-left_xx-small" title="Add New Case"></lightning-button-icon>
+        </td>
+
+    </tr>
+</thead>
+<tbody>
+    <template for:each={cases} for:item="casenew">
+    <tr key={casenew.tempId}>
+        <td>
+            <lightning-input name="Subject" placeholder="Enter Subject" data-temp-id={casenew.tempId} onblur={elementChangeHandler}></lightning-input>
+                
+        </td>    
+        <td>
+            <lightning-combobox
+            name="Status"
+            placeholder="Select Status" 
+            options={getStatusPicklistValues}
+            onblur={elementChangeHandler}
+            data-temp-id={casenew.tempId}>
+            </lightning-combobox>
+        </td>
+        <td>
+            <lightning-combobox
+            name="Origin"
+            placeholder="Select Origin"
+            options={getOriginPicklistValues}
+            onblur={elementChangeHandler}
+            data-temp-id={casenew.tempId}>
+            </lightning-combobox>
+        </td>
+        <td>
+            <lightning-combobox
+            name="Reason"
+            placeholder="Select Reason" 
+            options={getReasonPicklistValues}
+            onblur={elementChangeHandler}
+            data-temp-id={casenew.tempId}>
+            </lightning-combobox>
+        </td>
+        <td>
+            <lightning-button-icon icon-name="utility:delete" onclick={deleteCase} data-temp-id={casenew.tempId}  alternative-text="Delete"   class="slds-m-left_xx-small" title="Delete"></lightning-button-icon>
+        </td>
+    </tr>
+    </template>
+</tbody>
+</table>
+</div>
+<!-- footer -->
+<div class="slds-modal__footer slds-text-align-right">
+<lightning-button variant="brand" label="Submit" onclick={submitClickHandler}></lightning-button>
+</div>
+</template>
