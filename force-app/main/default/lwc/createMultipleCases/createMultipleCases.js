@@ -109,4 +109,4 @@ export default class CreateMultipleCases extends LightningElement {
         });
         this.dispatchEvent(event);
     }
-}
+}  
